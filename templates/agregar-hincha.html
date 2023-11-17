@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block title %} Registrar Hincha {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/agregar-hincha.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+{% endblock %}
+{% block apartado %}
+Registrar Hincha 
+{% endblock %}
+
+{% block nav_buttons %}
+<a class="botones" href="{{url_for('index')}}">Inicio</a>
+{% endblock %}
+
+
+{% block content %}
+<div class="instruccion">
+    <p id="bajada"> Ingrese aqui sus datos y preferencias</p>
+</div>
+{% if error %}
+<div class="error-message">
+    <p>{{ error }}</p>
+</div>
+{% endif %}
+
+{% if errores %}
+<div class="error-message">
+    {% for e in errores %}
+        <p>{{ e }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+<form class="formulario" id="hincha-form" method="post" enctype="multipart/form-data">
+    
+    <div id="nombre-input" class="grupo-input">
+        <label for="nombre">Nombre:*</label>
+        <input id="nombre" name="nombre" type="text" maxlength="80" placeholder="e.g. Nicolas del Valle">
+    </div>
+
+    <div id="email-input" class="grupo-input">
+        <label for="email">Email:*</label>
+        <input id="email" name="email" type="text" maxlength="30" placeholder="e.g. ejemplo@ejemplo.com">
+    </div>
+
+    <div id="region-input" class="grupo-input">
+        <label for="region">Region donde vive:*</label>
+        <select name="region" id="region">
+          <option value="">Seleccione una Region</option>  
+          {% for region in regiones %}
+              <option value="{{ region }}">{{ region }}</option>      
+            {% endfor %}    
+        </select>
+    </div>
+
+    <div id="comuna-input" class="grupo-input">
+        <label for="comuna">Comuna donde vive:*</label>
+        <select name="comuna" id="comuna">
+            <option value="">Seleccione una Comuna</option>                     
+        </select>
+    </div>
+
+    <div id="transporte-input" class="grupo-input">
+        <label for="transporte">Modo de transporte:*</label>
+        <select name="transporte" id="transporte">
+            <option value="">Elija su modo de transporte</option>
+            <option value="locomoción pública">Locomocion Publica</option>
+            <option value="particular">Particular</option>
+        </select>
+    </div>
+
+    <div id="numero-input" class="grupo-input">
+        <label for="numero">Numero de contacto</label>
+        <input id="numero" name="numero" type="text" maxlength="15" placeholder="e.g. +56912345678">
+    </div>
+
+    <div id="deportes-input" class="grupo-input">
+        <label for="deportes">Deporte(s) que interesa apoyar (selecciona de 1 a 3):*</label><br>
+        <select name="deportes" id="deportes" multiple>
+            {% for deporte in deportes %}
+                <option value="{{ deporte }}">{{ deporte }}</option>      
+            {% endfor %}
+        </select>
+    </div>
+
+    <div id="comentarios-input" class="grupo-input">
+        <label for="comentario">Comentarios adicionales</label>
+        <textarea name="comentario" id="comentario" maxlength="80" cols="45" rows="4"></textarea>
+    </div>
+
+    <div class="botonRegistrar"> 
+        <button type="button" id="registrar-hincha">Registrar Hincha</button>
+    </div>
+
+</form>
+
+<!-- Contenedor para el mensaje de confirmación -->
+
+    <div id="confirmacion-modal" class="modal">
+        <div class="modal-contenido">
+            <p>¿Confirma el registro de este artesano?</p>
+            <button type="submit" id="enviar-formulario-btn">Si, confirmo</button>
+            <button id="cancelar-envio-btn">No, quiero volver al formulario</button>
+        </div>
+    </div>
+
+    <!-- Contenedor para el mensaje de error de validación -->
+    <div id="error-modal" class="modal">
+        <div class="modal-contenido">
+            
+            <ul id="val-msg"></ul>
+            <ul id="val-list"></ul>
+            <button id="cerrar-error-btn">Volver al formulario</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script> const deporteSelect = new MultiSelectTag('deportes');</script>   
+<script src="{{ url_for('static', filename='js/agregar-incha.js')}}"></script>
+<script src="{{ url_for('static', filename='js/comunas.js')}}"></script>
+{% endblock %}
+       
+    
+       
+        
+
+
+
+
+
+        
+        

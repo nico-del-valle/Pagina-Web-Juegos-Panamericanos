@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %} Informacion Hincha {% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/informacion-hincha.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+{% endblock %}
+{% block apartado %} Informacion Hincha {% endblock %}
+{% block nav_buttons %}
+<a class="botones" href="{{ url_for('lista_hinchas', num=1)}}">Volver a la lista</a>
+<a class="botones" href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+{% block content %}
+    
+    
+   
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Region</th>
+                    <th>Comuna</th>
+                    <th>Deporte(s)</th>
+                    <th>Modo de Transporte</th>
+                    <th>Numero celular</th>
+                    <th>Comentario</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                <tr>
+                    <td>{{ hincha[3] }}</td>
+                    <td>{{ hincha[4] }}</td>
+                    <td>{{ get_region(hincha[1]) }}</td>
+                    <td>{{ hincha[1] }}</td>
+                    <td>
+                        {% for deporte in get_deportes(hincha[3]) %}
+                            {{ deporte }} {% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ hincha[6] }}</td>
+                    <td>{{ hincha[5] }}</td>
+                    <td>{{ hincha[2] }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+{% endblock %}
+{% block javascript %}
+   <script>
+    function openPopup(imageUrl) {
+        var popup = document.getElementById('popup');
+        var popupImage = document.getElementById('popup-image');
+        popup.style.display = 'block';
+        popupImage.src = imageUrl;
+    }
+
+    function closePopup() {
+        var popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+</script>
+{% endblock %} 
+    
+    
+
+    
+ 

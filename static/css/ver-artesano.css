@@ -1,0 +1,86 @@
+:root {
+    --black-color: #000022;
+    --background-color: #E8E6F0;
+    --pink-color: #FC2865;
+
+}
+
+body {
+    margin: 0;
+    background-image: url('/static/background_3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+
+}
+
+.contenedor {
+    border: 1px solid var(--color-borde);
+    height: 50%;
+    max-width: 50%;
+    margin: 2% auto;
+    padding: 2rem;
+    padding-top: .5rem;
+    background-color: #ffffff;
+    border: .2em solid var(--black-color);
+    align-items: center;
+    border-radius: 20px;
+    overflow-x: auto;
+    
+    
+}
+
+.contenedor table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+table, th, td {
+    border: 1px solid #000000;
+    text-align: center;
+    
+    
+}
+td.fotos {
+    text-align: left;
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    background-color: var(--pink-color);
+    color: #000000;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    font-weight: 500;
+    border: .2em solid var(--black-color);
+    box-shadow: .175em .175em 0px 0px black;
+    border-radius: .3em;
+
+}
+
+.pagination a:hover {
+    background-color: #fb5685;
+    color: white;
+    transition: 0.2s ease;
+}
+
+
+.pagination-page:hover::after {
+    transform: scale(1, 1);
+}

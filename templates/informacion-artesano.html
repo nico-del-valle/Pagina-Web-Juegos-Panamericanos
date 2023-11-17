@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %} Ver Artesano {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/informacion-artesano.css')}}">
+{% endblock %}
+{% block apartado %} Informacion Artesano {% endblock %}
+{% block nav_buttons %}
+<a class="botones" href="{{ url_for('lista_artesanos', num=1)}}">Volver a la lista</a>
+<a class="botones" href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+{% block content %}
+
+    
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Region</th>
+                    <th>Comuna</th>
+                    <th>Numero celular</th>
+                    <th>Tipo(s) de artesania(s)</th>
+                    <th>Descripcion Artesanias</th>
+                    <th>Fotos</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                    <tr>
+                        <td>{{ artesano[3] }}</td>
+                        <td>{{ artesano[4] }}</td>
+                        <td>{{ get_region(artesano[1]) }}</td>
+                        <td>{{ artesano[1] }}</td>
+                        <td>{{ artesano[5] }}</td>
+                        <td>
+                            {% for tipo in get_tipos(artesano[3]) %}
+                                {{ tipo }} {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ artesano[2] }}</td>
+                        <td class="fotos">
+                            {% for foto in get_fotos(artesano[0]) %}
+                                <img src="{{ url_for('static', filename='uploads/' + foto[0])}}" alt="Foto artesania" style="width:640px;height:480px;" onclick="openPopup('{{ url_for('static', filename='uploads/' + foto[0]) }}')">
+                            {% endfor %}
+                        </td>
+                        
+                    </tr>
+            </tbody>
+        </table>
+        
+    
+    
+
+        <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+                <img id="popup-image" src="{{ url_for('static', filename='no_load.png')}}" alt="Imagen ampliada" />
+                <span class="close" onclick="closePopup()">&times;</span>
+            </div>
+        </div>
+    
+
+
+     
+
+
+{% endblock %}
+{% block javascript %}
+<script>
+    function openPopup(imageUrl) {
+        const popup = document.getElementById("popup");
+        const popupImage = document.getElementById("popup-image");
+        popupImage.src = imageUrl;
+        popup.style.display = "block";
+    }
+
+    function closePopup() {
+        const popup = document.getElementById("popup");
+        popup.style.display = "none";
+    }
+</script>
+{% endblock %}

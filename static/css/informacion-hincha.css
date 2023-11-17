@@ -1,0 +1,49 @@
+:root {
+    --black-color: #000022;
+    --background-color: #E8E6F0;
+    --pink-color: #FC2865;
+
+}
+
+body {
+    margin: 0;
+    background-image: url('/static/background_3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+
+}
+
+
+
+
+/*contenedor*/
+.contenedor {
+    border: 1px solid var(--color-borde);
+    height: 50%;
+    max-width: 50%;
+    margin: 2% auto;
+    padding: 2rem;
+    padding-top: .5rem;
+    background-color: #ffffff;
+    border: .2em solid var(--black-color);
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    
+}
+
+.contenedor table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid #000000;
+    text-align: center;
+    
+}
+
+

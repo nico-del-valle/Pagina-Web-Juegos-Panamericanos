@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} Listado Artesanos {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ver-artesano.css') }}">
+{% endblock %}
+{% block apartado %} Listado Artesanos {% endblock %}
+
+{% block nav_buttons %}
+<a class="botones" href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+{% block content %}
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Comuna</th>
+                    <th>Tipo Artesania</th>
+                    <th>Fotos</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                {% for artesano in artesanos %}
+                    
+                    <tr class="clickable-row" data-href="{{ url_for('informacion_artesano', artesano_id=artesano[0]) }}">
+                        <td>{{ artesano[3] }}</td> 
+                        <td>{{ artesano[5] }}</td>
+                        <td>{{ artesano[1] }}</td>
+                        <td>
+                            {% for tipo in get_tipos(artesano[3]) %}
+                                {{ tipo }} {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="fotos">
+                            {% for foto in get_fotos(artesano[0]) %}
+                                <img src="{{ url_for('static', filename='uploads/' + foto[0])}}" alt="Foto artesania" style="width:120px;height:120px;">
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}        
+            </tbody>
+        </table>  
+        <div class="pagination">
+            
+                {% if num > 1 %}
+                    <a href="{{ url_for('lista_artesanos', num=num-1) }}">Anterior</a>
+                {% endif %}
+                <a href="{{ url_for('lista_artesanos', num=num+1) }}">Siguiente</a>
+            
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/pagination.js')}}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll(".clickable-row");
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+    
+    
+    

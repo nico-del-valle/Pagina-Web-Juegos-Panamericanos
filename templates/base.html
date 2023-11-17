@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <div class="navbar">
+        <img id="logo-id" src="{{ url_for('static', filename='Santiago_2023_Cuadrada.svg') }}" alt="Logo Santiago 2023">
+        <h1>
+            {% block apartado %}{% endblock %}
+        </h1>
+        {% block nav_buttons %}{% endblock %} 
+    </div>
+
+
+
+    <section class="contenedor">
+        {% block content %}{% endblock %}
+        {% block javascript %}{% endblock %}
+    </section> 
+
+</body>
+
+</html>

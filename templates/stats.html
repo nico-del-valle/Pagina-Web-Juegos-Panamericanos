@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Estadisticas{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/stats.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+{% endblock %}
+{% block apartado %}
+Estadisticas
+{% endblock %}
+
+{% block nav_buttons %}
+<a class="botones" href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="instruccion">
+    <p>Elige el grafico que desees ver</p>
+</div>
+<button class="botonesGraficos" id="btnGraficoArtesanos" onclick="mostrarGrafico('stats-artesanos')">Tipos de Artesanias</button>
+<button class="botonesGraficos" id="btnGraficoDeportes" onclick="mostrarGrafico('stats-hinchas')">Hinchas por Deporte</button>
+
+<div class="stats-container">
+    <figure class="highcharts-figure">
+        <div id="stats-artesanos" style="display: none"></div>
+        <p class="highcharts-description"></p>
+        <div id="stats-hinchas" style="display: none"></div>
+        <button class="botonesGraficos2" id="btnVolver" onclick="volver()" style="display:none" >Volver</button>
+        <button class="botonesGraficos2" id="btnActualizar" onclick="actualizar()" style="display:none">Actualizar</button>
+    </figure>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='js/stats.js')}}"></script>
+{% endblock %}

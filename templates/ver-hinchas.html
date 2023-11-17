@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Listado Hinchas{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/ver-hincha.css')}}">
+{% endblock %}
+{% block apartado %} Listado Hinchas {% endblock %}
+{% block nav_buttons %}
+<a class="botones" href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+{% block content %}
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Comuna</th>
+                <th>Deporte</th>
+                <th>Modo de Transporte</th>
+                <th>Numero celular</th>
+            </tr>
+        </thead>
+        <tbody id="tablaBody">
+            <!-- Aquí se generarán dinámicamente las filas y celdas -->
+            {% for hincha in hinchas %}
+            <tr class="clickable-row" data-href="{{ url_for('informacion_hincha', hincha_id=hincha[0])}}">
+                <td>{{ hincha[3] }}</td>
+                <td>{{ hincha[1] }}</td>
+                <td>
+                    {% for deporte in get_deportes(hincha[3]) %}
+                        {{ deporte }} {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ hincha[2] }}</td>
+                <td>{{ hincha[5] }}</td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+            
+        {% if num > 1 %}
+            <a href="{{ url_for('lista_hinchas', num=num-1) }}">Anterior</a>
+        {% endif %}
+        <a href="{{ url_for('lista_hinchas', num=num+1) }}">Siguiente</a>
+    
+    </div>
+    
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/pagination.js')}}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll(".clickable-row");
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                const link = row.getAttribute("data-href");
+                if (link) {
+                    window.location.href = row.dataset.href;
+                }
+                
+            });
+        });
+    });
+</script>
+{% endblock %}
+    
+    
+
+
+      
+
+    

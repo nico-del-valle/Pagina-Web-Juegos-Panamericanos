@@ -1,0 +1,93 @@
+:root {
+    --black-color: #000022;
+    --background-color: #E8E6F0;
+    --pink-color: #FC2865;
+
+}
+
+body {
+    margin: 0;
+    background-image: url('/static/background_3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+
+}
+
+
+
+
+
+table, th, td {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    
+    
+}
+
+
+
+  
+
+
+  
+
+
+table img {
+    cursor: pointer;
+
+}
+
+#table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #000000;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 1280px;
+    height: 1024px;;
+    position: relative;
+}
+
+.popup-content img {
+    width: 100%;
+    height: auto;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,112 @@
+:root {
+    --black-color: #000022;
+    --background-color: #E8E6F0;
+    --pink-color: #FC2865;
+
+}
+
+body {
+    margin: 0;
+    background-image: url('/static/background_3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+
+}
+
+
+/*contenedor*/
+.contenedor {
+    border: 2px solid var(--black-color);
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    padding-top: .5rem;
+    background-color: #ffffff;
+    border-radius: 25px;
+    text-align: center;
+    
+}
+
+.contenedor table {
+    table-layout: fixed;
+    width: 50px;
+}
+
+table, th, td {
+    border: 1px solid #000000;
+    
+    
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+}
+
+.stats-container {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+#stats-artesanos,
+#stats-hinchas {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+
+.botonesGraficos {
+    background-color: var(--pink-color);
+    width: 150px;
+    text-align: center;
+    padding: 0.5em;
+    border: 0.2em solid var(--black-color);
+    box-shadow: 0.175em 0.175em 0px 0px black;
+    border-radius: .3em;
+    display: inline-block;
+    margin-left: 10px;
+    
+}
+
+.botonesGraficos2 {
+    background-color: var(--pink-color);
+    width: 100px;
+    text-align: center;
+    padding: 0.5em;
+    border: 0.2em solid var(--black-color);
+    box-shadow: 0.175em 0.175em 0px 0px black;
+    border-radius: .3em;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+.instruccion {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}	
+
+
+.botonesGraficos:hover {
+    background-color: #fb5685;
+    color: white;
+    transition: 0.2s ease;
+    cursor:pointer;
+    
+}
+
+.botonesGraficos2:hover {
+    background-color: #fb5685;
+    color: white;
+    transition: 0.2s ease;
+    cursor:pointer;
+    
+}
+

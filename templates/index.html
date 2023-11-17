@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Juegos Panamericanos{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="../../static/css/index.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css')}}">
+{% endblock %}
+{% block apartado %}
+Juegos Panamericanos
+{% endblock %}
+
+
+{% block content %}      
+    {% if succes_message %}
+        <p>{{succes_message}}</p>
+    {% endif %}
+        <div class="logo">
+            <img id="logo-contenedor-id" src="{{ url_for('static', filename='Santiago_2023_Cuadrada.svg') }}" alt="Logo Santiago 2023" width="300" height="300">
+            <p id="bajada"> Elige la accion que desees realizar </p>
+        </div>
+   
+        <form class="lista" id="eleccion">
+            <div>           
+                <a class="boton" href="{{ url_for('registrar_hincha') }}">Registrar Hincha</a>
+                <a class="boton" href="{{ url_for('registrar_artesano')}}">Registrar Artesano</a>
+                <a class="boton" href="{{ url_for('lista_artesanos', num=1)}}">Ver listado de artesanos</a>
+                <a class="boton" href="{{ url_for('lista_hinchas', num=1)}}">Ver listado de hinchas</a>
+                <a class="boton" href="{{ url_for('stats')}}">Ver estadisticas</a>
+            </div>
+        </form>
+        
+        {% if request.args.get('registered') %}
+        <script>
+            alert("¡Registro exitoso!");
+        </script>
+        {% endif %}
+{% endblock %}
+
+
+
